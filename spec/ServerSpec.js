@@ -50,7 +50,7 @@ describe("Node Server Request Listener Function", function() {
     expect(res._ended).toEqual(true);
   });
 
-  xit("Should 404 when asked for a nonexistent file", function() {
+  it("Should 404 when asked for a nonexistent file", function() {
     var req = new stubs.Request("http://127.0.0.1:8080/arglebargle", "GET");
     handler.handleRequest(req, res);
     async(function() {
