@@ -2,15 +2,11 @@ var httpGet = require('http-get'),
     fs = require('fs');
 
 exports.readUrls = function(filePath, callback){
-  var urls = [];
-  fs.readFile(filePath, 'utf8', function(err, data) {
-    var arr = data.split('\n');
-    for (var i = 0, l = arr.length; i < l; i++) {
-      if (callback) callback(arr[i]);
-      urls.push(arr[i]);
-    }
+  var urls = fs.readFileSync(filePath, 'utf8');
+  urls = urls.split('\n');
+  urls.forEach(function(url) {
+    callback(url);
   });
-  return urls;
 };
 
 
