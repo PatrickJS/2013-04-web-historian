@@ -9,19 +9,16 @@ describe("html fetcher helpers", function(){
 
     fs.writeFileSync(__dirname + "/testdata/sites.txt", urlArray.join("\n"));
 
-    var resultArray = [];
-    var result = htmlFetcherHelpers.readUrls(urlArray, function(urls){
-      resultArray.push(urls);
-    });
+    var resultArray = htmlFetcherHelpers.readUrls(__dirname + "/testdata/sites.txt");
 
     waits(200);
     runs(function(){
       expect(resultArray).toEqual(urlArray);
     });
   });
-  
-  xit("should have a 'downloadUrls' function", function(){
-    var result = htmlFetcherHelpers.downloadUrls();
+
+  it("should have a 'downloadUrls' function", function(){
+    var result = htmlFetcherHelpers.downloadUrls(['www.facebook.com', 'www.google.com']);
     expect(result).toBeTruthy();
   });
 });
