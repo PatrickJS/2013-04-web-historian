@@ -1,3 +1,5 @@
+var httpGet = require('http-get');
+
 exports.readUrls = function(filePath, cb){
   // fixme
 };
